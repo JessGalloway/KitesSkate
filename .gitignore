@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+#Protecting sensitive data
+/appsettings.json
+KitesSkate/appsettings.json
