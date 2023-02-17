@@ -28,5 +28,15 @@ namespace KitesSkate.UI.MVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
-}
+
+        public IActionResult About() { return View(); }
+
+        public IActionResult Contact() { return View(); }
+
+        public IActionResult Product() { return View(); }
+
+        public IActionResult SingleProduct() { return View(); }
+
+
+    }//end class
+}//end namespace
