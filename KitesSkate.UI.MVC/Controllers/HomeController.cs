@@ -35,7 +35,10 @@ namespace KitesSkate.UI.MVC.Controllers
 
         public IActionResult Product() { return View(); }
 
-        public IActionResult SingleProduct() { return View(); }
+        public IActionResult SingleProduct() 
+        {
+            return View(); 
+        }
 
 
     }//end class

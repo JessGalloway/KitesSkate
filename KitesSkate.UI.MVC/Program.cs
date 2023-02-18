@@ -1,4 +1,5 @@
 using KitesSkate.UI.MVC.Data;
+using KitsSkate.DATA.EF.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,8 +13,15 @@ namespace KitesSkate.UI.MVC
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            //UI Layer
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            //Add DbContext
+            builder.Services.AddDbContext<KitesSkateContext>(options =>
+            options.UseSqlServer(connectionString));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             //**********************************************    UPDATED builder.Services UPDATED   ****************************************************
