@@ -21,4 +21,7 @@ namespace KitsSkate.DATA.EF.Models //.MetaData
     [ModelMetadataType(typeof(GearMetaData))]
     public partial class Gear { }
 
+    [ModelMetadataType(typeof(UsersMetaData))]
+    public partial class User { }
+
 }

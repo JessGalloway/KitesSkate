@@ -1,0 +1,72 @@
+﻿@model KitsSkate.DATA.EF.Models.Gear
+
+@{
+    ViewData["Title"] = "Add Gear";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@*<h4>Gear</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GearName" class="control-label"></label>
+                <input asp-for="GearName" class="form-control" />
+                <span asp-validation-for="GearName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearPrice" class="control-label"></label>
+                <input asp-for="GearPrice" class="form-control" />
+                <span asp-validation-for="GearPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearDescription" class="control-label"></label>
+                <input asp-for="GearDescription" class="form-control" />
+                <span asp-validation-for="GearDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearInStock" class="control-label"></label>
+                <input asp-for="GearInStock" class="form-control" />
+                <span asp-validation-for="GearInStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearOnOrder" class="control-label"></label>
+                <input asp-for="GearOnOrder" class="form-control" />
+                <span asp-validation-for="GearOnOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GearAvailable" /> @Html.DisplayNameFor(model => model.GearAvailable)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="BrandId" class="control-label"></label>
+                <select asp-for="BrandId" class ="form-control" asp-items="ViewBag.BrandId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductImage" class="control-label"></label>
+                <input asp-for="ProductImage" class="form-control" />
+                <span asp-validation-for="ProductImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GearTypeId" class="control-label"></label>
+                <input asp-for="GearTypeId" class="form-control" />
+                <span asp-validation-for="GearTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Gear</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

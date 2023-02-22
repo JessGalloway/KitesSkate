@@ -34,6 +34,21 @@ namespace KitesSkate.UI.MVC
 
             builder.Services.AddControllersWithViews();
 
+            //Shopping Cart - Step 1 
+            //Register Session -> MUST go after .AddControllersWithViews()
+            //-After this, add app.UseSession() after routing
+
+            builder.Services.AddSession(options => 
+            {
+                
+                options.IdleTimeout= TimeSpan.FromMinutes(20);//howl long session will be active
+                options.Cookie.HttpOnly = true;//allows cookies options to be set
+                options.Cookie.IsEssential = true;//if you wish to use site must allow cookies
+            
+            });
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

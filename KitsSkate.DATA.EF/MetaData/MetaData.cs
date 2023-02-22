@@ -34,7 +34,7 @@ namespace KitsSkate.DATA.EF.Models //.MetaData
     public class GearMetaData
     {
         //PK
-        //public int GearId { get; set; }
+        public int GearId { get; set; }
 
 
         [Required]
@@ -43,7 +43,8 @@ namespace KitsSkate.DATA.EF.Models //.MetaData
         public string GearName { get; set; } = null!;
 
         [Required]
-        [DisplayFormat(DataFormatString = "{0:c}")]
+        //[DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString ="{0:c}")]
         [Range(0, (double)decimal.MaxValue)]
         [Display(Name = "Price")]
         public decimal GearPrice { get; set; }
@@ -107,6 +108,33 @@ namespace KitsSkate.DATA.EF.Models //.MetaData
         [Display(Name = "Zip")]
         [DataType(DataType.PostalCode)]
         public string ShipZip { get; set; } = null!;
+
+    }
+
+    public class UsersMetaData
+    {
+
+        public string UserId { get; set; } = null!;
+        [StringLength(50)]
+        [Display(Name = "First Name")]
+        [Required]
+        public string FirstName { get; set; } = null!;
+        [StringLength(50)]
+        [Display(Name = "Last Name")]
+        [Required]
+        public string LastName { get; set; } = null!;
+        [StringLength(150)]
+        public string? Address { get; set; }
+        [StringLength(50)]
+        public string? City { get; set; }
+        [StringLength(2)]
+        public string? State { get; set; }
+        [StringLength(5)]
+        [DataType(DataType.PostalCode)]
+        public string? Zip { get; set; }
+        [StringLength(24)]
+        [DataType(DataType.PhoneNumber)]
+        public string? Phone { get; set; }
 
     }
     
