@@ -1,0 +1,52 @@
+﻿@model IEnumerable<KitsSkate.DATA.EF.Models.Brand>
+
+@{
+    ViewData["Title"] = "Brands";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Add Brand</a>
+</p>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geartype)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Geartype)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BrandId">Modify</a> |
+                    <a asp-action="Details" asp-route-id="@item.BrandId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BrandId">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

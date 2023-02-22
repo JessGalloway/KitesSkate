@@ -1,0 +1,148 @@
+﻿@model IEnumerable<KitsSkate.DATA.EF.Models.Gear>
+
+@{
+    ViewData["Title"] = "Gear";
+}
+
+<h1>Gear</h1>
+
+<p>
+    <a asp-action="Create">Add Gear</a>
+</p>
+
+
+
+
+
+<!-- ***** Products Area Starts ***** -->
+<section class="section" id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Our latest Gear</h2>
+                    <span>Check out all of our products.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container align-content-center">
+        <div class="row">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a asp-action="Edit" asp-route-id="@item.GearId">Edit</a></li>
+                                    <li><a asp-action="Delete" asp-route-id="@item.GearId">Delete</a></li>
+                                </ul>
+                                <br />
+                                <ul>
+                                    <li><a asp-action="Details" asp-route-id="@item.GearId"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                    <li><a asp-action="AddToCart" asp-route-id="@item.GearId"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <img src="~/assets/images/men-01.jpg" alt="">
+                        </div>
+                        <div class="down-content justify-content-center">
+                            <h4>@item.GearDescription</h4>
+                            <span>@item.GearPrice</span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    @*End Products section*@
+
+
+
+
+
+
+
+</section>
+
+<
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GearName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GearPrice)
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.GearDescription)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.GearInStock)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.GearOnOrder)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.GearAvailable)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.GearTypeId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GearName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GearPrice)
+                </td>
+                @*   <td>
+            @Html.DisplayFor(modelItem => item.GearDescription)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.GearInStock)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.GearOnOrder)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.GearAvailable)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductImage)
+                </td>
+                @*  <td>
+            @Html.DisplayFor(modelItem => item.GearTypeId)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.BrandName)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

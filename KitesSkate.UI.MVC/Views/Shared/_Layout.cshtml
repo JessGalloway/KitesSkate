@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -53,35 +55,39 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a asp-action="Index" asp-controller="HomeController" class="logo">
+                        <a asp-action="Index" asp-controller="Home" class="logo">
                             <img src="~/assets/images/logo.png">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a asp-action="Index" asp-controller="HomeController">Home</a></li>
-                            <li class="scroll-to-section"><a href="~/#men">Men's</a></li>
-                            <li class="scroll-to-section"><a href="~/#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="~/#kids">Kid's</a></li>
+                            <li class="scroll-to-section"><a asp-action="Index" asp-controller="Home">Home</a></li>
                             <li class="submenu">
-                                <a href="~/javascript:;">Pages</a>
+                                <a href="~/javascript:;">Gear</a>
                                 <ul>
-                                    <li><a asp-action="About" asp-controller="Home">About Us</a></li>
-                                    <li><a asp-action="Products" asp-controller="Home">Products</a></li>
-                                    <li><a asp-action="SingelProduct" asp-controller="Home">Single Product</a></li>
-                                    <li><a asp-action="Contact" asp-controller="Home">Contact Us</a></li>
+                                    <li><a asp-action="SingleProduct" asp-controller="Home">SkateBoards</a></li>
+                                    <li><a asp-action="Products" asp-controller="Home">Trucks</a></li>
+                                    <li><a asp-action="Product" asp-controller="Home">Wheels</a></li>
+                                    <li><a asp-action="Products" asp-controller="Home">Bearings</a></li>
+                                    <li><a asp-action="Products" asp-controller="Home">Grip</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
-                                <a href="~/javascript:;">Features</a>
+                           @* <li class="submenu">
+                                <a href="~/javascript:;">Featured Brands</a>
                                 <ul>
-                                    <li><a href="~/#">Features Page 1</a></li>
-                                    <li><a href="~/#">Features Page 2</a></li>
-                                    <li><a href="~/#">Features Page 3</a></li>
-                                    @*<li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>*@
+                                    <li><a asp-action="Details" >Zero</a></li>
+                                    <li><a href="~/#">Anti-Hero</a></li>
+                                    <li><a href="~/#">Enjoi</a></li>
+                                    <li><a href="~/#">Brand</a></li>
+                                    <li><a href="~/#">Brand</a></li>
+                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
                                 </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="~/#explore">Explore</a></li>
+                            </li>*@
+                            <li class="scroll-to-section"><a asp-action="Index" asp-controller="Gear">Browse All Gear</a></li>
+                            
+                            <li class="scroll-to-section"><a asp-action="About" asp-controller="Home">About Us</a></li>
+                            <li class="scroll-to-section"><a asp-action="Contact" asp-controller="Home">Contact</a></li>
+                            <li class="scroll-to-seciton"><partial name="_LoginPartial" /></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

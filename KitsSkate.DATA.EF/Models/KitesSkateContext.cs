@@ -33,7 +33,7 @@ namespace KitsSkate.DATA.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=KitesSkate;Trusted_Connection=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=KitesSkate;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
@@ -194,9 +194,7 @@ namespace KitsSkate.DATA.EF.Models
                     .IsUnicode(false)
                     .IsFixedLength();
 
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(5)
-                    .IsFixedLength();
+                entity.Property(e => e.UserId).HasMaxLength(128);
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
@@ -226,9 +224,7 @@ namespace KitsSkate.DATA.EF.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(5)
-                    .IsFixedLength();
+                entity.Property(e => e.UserId).HasMaxLength(128);
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(150)

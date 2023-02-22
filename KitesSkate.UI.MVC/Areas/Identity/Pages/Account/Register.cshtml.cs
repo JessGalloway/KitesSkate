@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using KitsSkate.DATA.EF.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Data.SqlClient.Server;
 using Microsoft.Extensions.Logging;
 
 namespace KitesSkate.UI.MVC.Areas.Identity.Pages.Account
@@ -70,10 +72,9 @@ namespace KitesSkate.UI.MVC.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
+
+
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -97,6 +98,33 @@ namespace KitesSkate.UI.MVC.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            //Etend Identity Step 1
+            //Adding the properties below so we ban bind this infor to the RegisterModel and then use that to creat our UderDetails object
+            [Required]
+            [StringLength(50, ErrorMessage = "Mac 50 characters")]
+            public string FirstName { get; set; } = null!;
+
+            [Required]
+            [StringLength(50, ErrorMessage = "Mac 50 characters")]
+            public string LastName { get; set; } = null!;
+
+            [StringLength(150, ErrorMessage = "Mac 150 characters")]
+            public string? Address { get; set; }
+
+            [StringLength(50, ErrorMessage = "Mac 50 characters")]
+            public string? City { get; set; }
+
+
+            [StringLength(2, ErrorMessage = "Mac 2 characters")]
+            public string? State { get; set; }
+
+            [StringLength(5, ErrorMessage = "Mac 5 characters")]
+            public string? Zip { get; set; }
+
+            [StringLength(24, ErrorMessage = "Mac 24 characters")]
+            public string? Phone { get; set; }
+           
         }
 
 
@@ -123,6 +151,35 @@ namespace KitesSkate.UI.MVC.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
+
+
+                    #region Extend Identity Step 3
+
+                    KitesSkateContext _context = new KitesSkateContext();
+
+                    User userDetails = new User() 
+                    {
+                        UserId = userId,
+                        FirstName = Input.FirstName,
+                        LastName = Input.LastName,
+                        Address = Input.Address,
+                        City = Input.City,
+                        State = Input.State,
+                        Zip = Input.Zip,
+                        Phone = Input.Phone
+                    };
+
+                    _context.Users.Add(userDetails);
+
+                    _context.SaveChanges();
+
+
+
+                    #endregion
+
+
+
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
